@@ -2,32 +2,32 @@
 const path = require('path')
 /**获取本机ip**/
 function getIPAddress(){
-    var interfaces = require('os').networkInterfaces()
-    for(var devName in interfaces) {
-        var iface = interfaces[devName]
-        for (var i = 0; i < iface.length; i++) {
-            var alias = iface[i]
-            if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
-                return alias.address
-            }
-        }
+  var interfaces = require('os').networkInterfaces()
+  for(var devName in interfaces) {
+    var iface = interfaces[devName]
+    for (var i = 0; i < iface.length; i++) {
+      var alias = iface[i]
+      if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
+        return alias.address
+      }
     }
+  }
 }
 
 module.exports = {
   dev: {
     proxyTable: {
-        '**': {
-            target: 'http://IP',
-            changeOrigin: true,
-            filter: function(pathname, req) {
-                const isApi = pathname.indexOf('/aspire-demo') == 0;
-                return isApi;
-            }
+      '**': {
+        target: 'http://IP',
+        changeOrigin: true,
+        filter: function(pathname, req) {
+          const isApi = pathname.indexOf('/aspire-demo') == 0
+          return isApi
         }
+      }
     },
     host:getIPAddress(), // host:'0.0.0.0',动态获取当前机器IP地址
-    port: process.env.PORT || 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: process.env.PORT || 8081, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     devtool: 'eval-source-map',
   },
 

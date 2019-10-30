@@ -9,8 +9,13 @@ const dev = {
   entry: {
     main: ['babel-polyfill', './src/App.js'],
   },
+  
+  resolve:{
+    alias:{'@':path.resolve(__dirname,'../src')},
+    extensions:['.js','.jsx'],
+  },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../dist'),
     filename: 'bundle.js'
   },
   module: {
