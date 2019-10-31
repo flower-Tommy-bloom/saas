@@ -1,5 +1,8 @@
 import React, {PureComponent} from 'react'
 export default class Home extends PureComponent{
+  constructor(){
+    super()
+  }
   render(){
     return (
       <div >

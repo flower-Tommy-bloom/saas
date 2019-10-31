@@ -18,17 +18,17 @@ function getIPAddress(){
 
 module.exports = {
   dev: {
-    proxyTable: {
-      '**': {
-        target: 'http://IP',
-        changeOrigin: true,
-        filter: function(pathname, req) {
-          const isApi = pathname.indexOf('/aspire-demo') == 0
-          return isApi
-        }
-      }
+    proxy: {
+      // '**': {
+      //   target: 'http://IP',
+      //   changeOrigin: true,
+      //   filter: function(pathname, req) {
+      //     const isApi = pathname.indexOf('/aspire-demo') == 0
+      //     return isApi
+      //   }
+      // }
     },
-    host:getIPAddress(),
+    host: getIPAddress(),
     port: process.env.PORT || 8081, 
     devtool: 'eval-source-map',
   },

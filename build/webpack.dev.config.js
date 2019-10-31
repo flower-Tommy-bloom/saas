@@ -57,14 +57,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     hot: true,
     port: config.dev.port,
     host: config.dev.host,
-    proxy: {
-      '/api': {
-        target: 'http://127.0.0.1:3000/',
-        pathRewrite: {
-          '^/api': ''
-        }
-      }
-    }
+    proxy: config.dev.proxy
   }
 })
 
