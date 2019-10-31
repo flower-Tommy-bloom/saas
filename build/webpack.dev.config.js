@@ -6,12 +6,13 @@ const merge = require('webpack-merge')
 const webpack = require('webpack')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const config = require('../config')
+const px2rem = require('postcss-px2rem')
 
-const devWebpackConfig = merge(baseWebpackConfig,{
-  mode:'development',
+const devWebpackConfig = merge(baseWebpackConfig, {
+  mode: 'development',
   stats: 'errors-only',
-  module:{
-    rules:[
+  module: {
+    rules: [
       {
         test: /\.(css|less)$/,
         use: [
@@ -19,10 +20,25 @@ const devWebpackConfig = merge(baseWebpackConfig,{
           {
             loader: 'css-loader',
             options: {
-              importLoaders: 2
+              importLoaders: 1
             }
           },
-          'less-loader'
+          {
+            loader: require.resolve('postcss-loader'),
+            options:{
+                ident:'postcss',
+                plugins:() => [
+                  require('postcss-flexbugs-fixes'),
+                  require('postcss-preset-env')({
+                    autoprefixer:{
+                      flexbox: 'no-2009'
+                    }
+                  }),
+                  px2rem({remUnit:37.5})
+                ]
+            }
+          },
+          'less-loader',
         ]
       }
     ]
@@ -32,13 +48,13 @@ const devWebpackConfig = merge(baseWebpackConfig,{
       compilationSuccessInfo: {
         messages: [`Your application is running here: http://${config.dev.host}:${config.dev.port}`],
       },
-      clearConsole:true
+      clearConsole: true
     })
   ],
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
-    hot:true,
+    hot: true,
     port: config.dev.port,
     host: config.dev.host,
     proxy: {
