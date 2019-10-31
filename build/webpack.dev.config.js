@@ -10,6 +10,23 @@ const config = require('../config')
 const devWebpackConfig = merge(baseWebpackConfig,{
   mode:'development',
   stats: 'errors-only',
+  module:{
+    rules:[
+      {
+        test: /\.(css|less)$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2
+            }
+          },
+          'less-loader'
+        ]
+      }
+    ]
+  },
   plugins: [
     new FriendlyErrorsPlugin({
       compilationSuccessInfo: {
@@ -21,6 +38,7 @@ const devWebpackConfig = merge(baseWebpackConfig,{
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
     compress: true,
+    hot:true,
     port: config.dev.port,
     host: config.dev.host,
     proxy: {

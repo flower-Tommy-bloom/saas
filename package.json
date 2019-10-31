@@ -1,5 +1,9 @@
 {
-  "name": "React-project",
+  "name": "react-project",
+  "sideEffects": [
+    "@babel/polly-fill",
+    "*.css"
+  ],
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -25,7 +29,6 @@
     "eslint": "^6.6.0",
     "eslint-loader": "^3.0.2",
     "eslint-plugin-react": "^7.16.0",
-    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^4.2.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^3.2.0",

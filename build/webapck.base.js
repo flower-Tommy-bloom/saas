@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   entry: {
-    main: './src/App.js',
+    main: ['babel-polyfill','./src/main.js'],
   },
   resolve:{
     alias:{'@':path.resolve(__dirname,'../src')},
@@ -14,11 +14,14 @@ module.exports = {
     path: path.resolve(__dirname, '../dist'),
     filename: 'bundle.[hash].js'
   },
+  optimization:{
+    usedExports: true,
+  },
   module: {
     rules: [
       {
         test:/\.(js|jsx)$/,
-        use:['babel-loader'], // , 'eslint-loader'
+        use:['babel-loader', 'eslint-loader'],
         exclude:/node_modules/
       },
       {  
@@ -28,29 +31,18 @@ module.exports = {
             loader: 'url-loader',  
             options: {  
               limit: '1024' ,
-              name: '[name].[hash].[ext]'  
+              name: '[name].[hash].[ext]',
+              outputPath:'images/'
             }                        
           },  
         ]  
-      },
-      {
-        test: /\.(css|less)$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              importLoaders: 2
-            }
-          },
-          'less-loader'
-        ]
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'index.html'
+      template: 'index.html',
+      favicon:'./src/assets/images/favicon.png'
     })
   ]
 }
