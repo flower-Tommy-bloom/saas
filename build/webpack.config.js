@@ -9,7 +9,6 @@ const dev = {
   entry: {
     main: ['babel-polyfill', './src/App.js'],
   },
-  
   resolve:{
     alias:{'@':path.resolve(__dirname,'../src')},
     extensions:['.js','.jsx'],
@@ -19,42 +18,34 @@ const dev = {
     filename: 'bundle.js'
   },
   module: {
-    rules: [{
-      test: /\.(woff|eot|ttf|svg|png|jpg)$/,
-      use: [{
-        loader: 'url-loader',
-        options: {
-          limit: '1024'
-        }
-      }, ]
-    },
-    {
-      test:/\.(js|jsx)$/,
-      use:['babel-loader', 'eslint-loader'],
-      exclude:/node_modules/
-    },
-    {
-      test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-      use: [{
-        loader: 'url-loader',
-        options: {
-          limit: '1024'
-        }
-      }, ]
-    },
-    {
-      test: /\.(css|less)$/,
-      use: [
-        'style-loader',
-        {
-          loader: 'css-loader',
+    rules: [
+      {
+        test:/\.(js|jsx)$/,
+        use:['babel-loader', 'eslint-loader'],
+        exclude:/node_modules/
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        use: [{
+          loader: 'url-loader',
           options: {
-            importLoaders: 1
+            limit: '1024'
           }
-        },
-        'less-loader'
-      ]
-    }
+        }, ]
+      },
+      {
+        test: /\.(css|less)$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2
+            }
+          },
+          'less-loader'
+        ]
+      }
     ]
   },
   plugins: [

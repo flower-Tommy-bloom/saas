@@ -14,7 +14,7 @@ module.exports = {
             "experimentalObjectRestSpread": true,
             "jsx": true
         },
-        "sourceType": "module"
+        "sourceType": ['module','dist']
     },
     "plugins": [
         "react"
