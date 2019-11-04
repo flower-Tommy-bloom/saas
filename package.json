@@ -63,6 +63,7 @@
     "react-dom": "^16.11.0",
     "react-router-dom": "^5.1.2",
     "react-weui": "^1.2.2",
+    "redux": "^4.0.4",
     "weui": "^1.1.0"
   }
 }
