@@ -19,14 +19,14 @@ function getIPAddress(){
 module.exports = {
   dev: {
     proxy: {
-      // '**': {
-      //   target: 'http://IP',
-      //   changeOrigin: true,
-      //   filter: function(pathname, req) {
-      //     const isApi = pathname.indexOf('/aspire-demo') == 0
-      //     return isApi
-      //   }
-      // }
+      '**': {
+        target: 'http://127.0.0.1:3000',
+        changeOrigin: true,
+        filter: function(pathname, req) {
+          // const isApi = pathname.indexOf('/aspire-demo') == 0
+          // return isApi
+        }
+      }
     },
     host: getIPAddress(),
     port: process.env.PORT || 8081, 

@@ -26,16 +26,16 @@ const devWebpackConfig = merge(baseWebpackConfig, {
           {
             loader: require.resolve('postcss-loader'),
             options:{
-                ident:'postcss',
-                plugins:() => [
-                  require('postcss-flexbugs-fixes'),
-                  require('postcss-preset-env')({
-                    autoprefixer:{
-                      flexbox: 'no-2009'
-                    }
-                  }),
-                  px2rem({remUnit:37.5})
-                ]
+              ident:'postcss',
+              plugins:() => [
+                require('postcss-flexbugs-fixes'),
+                require('postcss-preset-env')({
+                  autoprefixer:{
+                    flexbox: 'no-2009'
+                  }
+                }),
+                px2rem({remUnit:37.5})
+              ]
             }
           },
           'less-loader',
