@@ -11,6 +11,7 @@ const px2rem = require('postcss-px2rem')
 const devWebpackConfig = merge(baseWebpackConfig, {
   mode: 'development',
   stats: 'errors-only',
+  devtool:'cheap-module-eval-source-map',
   module: {
     rules: [
       {

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Route,HashRouter} from 'react-router-dom'
 
-import Home from '@/views/Home'
+import Home from '@/views/Home/index'
 
 const RouterConfig = ()=>{
 

@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.config.js",
     "mock": "node ./mock/mock-server.js",
-    "start": "concurrently \"npm run mock\" \"npm dev\" ",
+    "start": "concurrently \"npm run mock\" \"npm run dev\" ",
     "build": "webpack --config build/webpack.prod.config.js",
     "dll": "webpack --config build/webpack.vendors.js"
   },

@@ -52,7 +52,5 @@ module.exports = {
       template: 'index.html',
       favicon: './src/assets/images/favicon.png'
     }),
-    // // 启用作用域提升,让代码文件更小、运行的更快
-    // new webpack.optimize.ModuleConcatenationPlugin(),
   ]
 }
