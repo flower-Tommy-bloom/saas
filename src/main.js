@@ -4,7 +4,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Router from './routes'
 import '@/style/index.less'
-import '@/API'
+import API from '@/API'
+React.$api = function(){
+  return API
+}
 
 import 'weui'
 import 'react-weui/build/packages/react-weui.css'
